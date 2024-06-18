@@ -1,143 +1,5 @@
 console.log("linked");
-// document.addEventListener("DOMContentLoaded", function () {
-//     if (!document.querySelector(".slider")) {
-//         return;
-//     }
 
-//     const slides = document.querySelectorAll(".slider .slide");
-//     let currentIndex = 0;
-
-//     function showSlide(index) {
-//         slides[currentIndex].classList.remove("active");
-//         slides[index].classList.add("active");
-//         currentIndex = index;
-//     }
-
-//     function nextSlide() {
-//         const nextIndex = (currentIndex + 1) % slides.length;
-//         showSlide(nextIndex);
-//     }
-
-//     // Show the first slide
-//     showSlide(0);
-
-//     // Change slide every 5 seconds
-//     setInterval(nextSlide, 5000);
-// });
-
-const menuItems = document.querySelector(".menu-items");
-const hamburgerMenuBtn = document.querySelector(".hamburger-menu-btn");
-
-hamburgerMenuBtn.addEventListener("click", function () {
-    menuItems.classList.toggle("active");
-    hamburgerMenuBtn.classList.toggle("open");
-});
-
-let dropdownContents = document.querySelectorAll(".dropdown-content");
-
-// Hide all dropdown contents by default and apply animation classes
-dropdownContents.forEach(function (content) {
-    content.style.display = "none";
-    content.classList.add("dropdown-hide"); // Add initial animation class
-});
-
-// Get all dropdown buttons
-let dropdownBtns = document.querySelectorAll(".dropbtn");
-
-// Loop through each dropdown button and add click event listener
-dropdownBtns.forEach(function (dropdownBtn) {
-    // Toggle dropdown visibility when the button is clicked
-    dropdownBtn.onclick = function (event) {
-        event.preventDefault(); // Prevent default link behavior
-        var dropdownContent = dropdownBtn.nextElementSibling;
-
-        // Close all other open dropdowns except for the current one and its parents
-        closeAllDropdowns(dropdownBtn);
-
-        // Toggle dropdown content visibility with animation
-        toggleDropdownVisibility(dropdownContent);
-    };
-});
-
-// Function to toggle dropdown content visibility with animation
-function toggleDropdownVisibility(dropdownContent) {
-    if (dropdownContent.style.display === "block") {
-        setTimeout(function () {
-            dropdownContent.style.display = "none"; // Remove display property
-        }, 50);
-        dropdownContent.classList.remove("dropdown-show"); // Remove animation class
-        dropdownContent.classList.add("dropdown-hide"); // Add animation class
-    } else {
-        dropdownContent.style.display = "block";
-        dropdownContent.classList.remove("dropdown-hide"); // Remove animation class
-        dropdownContent.classList.add("dropdown-show"); // Add animation class
-    }
-}
-
-// Function to close all dropdowns except the current one and its parents
-function closeAllDropdowns(currentBtn) {
-    var allDropdownContents = document.querySelectorAll(".dropdown-content");
-    allDropdownContents.forEach(function (content) {
-        if (
-            content.previousElementSibling !== currentBtn &&
-            !content.contains(currentBtn)
-        ) {
-            content.classList.remove("dropdown-show"); // Remove animation class
-            content.classList.add("dropdown-hide"); // Add animation class
-            content.style.display = "none";
-        }
-    });
-}
-console.log(window.screen.width);
-if (window.screen.width > 700) {
-    // Hide dropdowns when user clicks outside any dropdown button or content
-    let timer;
-
-    // Function to close all dropdowns after a delay if the cursor is not on any dropdown
-    function closeDropdownsAfterDelay() {
-        // Clear the existing timer
-        clearTimeout(timer);
-
-        // Start a new timer to close dropdowns after 2 seconds
-        timer = setTimeout(function () {
-            closeAllDropdownsIfCursorOutside();
-        }, 1000); // Adjust the delay (in milliseconds) as needed
-    }
-
-    // Function to close all dropdowns if the cursor is outside of any dropdown
-    function closeAllDropdownsIfCursorOutside() {
-        const isCursorOutsideDropdowns =
-            !document.querySelector(".dropbtn:hover") &&
-            !document.querySelector(".dropdown-content:hover");
-        if (isCursorOutsideDropdowns) {
-            closeAllDropdowns(null);
-        } else {
-            closeDropdownsAfterDelay();
-        }
-    }
-
-    // Event listener for mousemove event
-    document.addEventListener("mousemove", function (event) {
-        const isCursorOutsideDropdowns =
-            !event.target.matches(".dropbtn") &&
-            !event.target.matches(".dropdown-content");
-        if (isCursorOutsideDropdowns) {
-            closeDropdownsAfterDelay();
-        }
-    });
-
-    // Event listener for click event
-    document.addEventListener("click", function (event) {
-        const isClickOutsideDropdowns =
-            !event.target.matches(".dropbtn") &&
-            !event.target.matches(".dropdown-content");
-        if (isClickOutsideDropdowns) {
-            closeAllDropdowns(null);
-        } else {
-            closeDropdownsAfterDelay();
-        }
-    });
-}
 var images = [];
 var currentIndex = 0;
 
@@ -188,8 +50,78 @@ function openPDF(pdfUrl) {
     window.open(pdfUrl, "_blank");
 }
 ////
-document.getElementById("dropdownIcon").addEventListener("click", function () {
-    // Trigger the dropdown when the icon is clicked
-    // dropdownBtns.click();
-    document.getElementById("dropdownButton").click();
+// document.getElementById("dropdownIcon").addEventListener("click", function () {
+//     // Trigger the dropdown when the icon is clicked
+//     // dropdownBtns.click();
+//     document.getElementById("dropdownButton").click();
+// });
+
+window.addEventListener('scroll', function() {
+    const header = document.querySelector('.header');
+    const threshold = 30;
+    const scrollY = window.scrollY;
+    const headerScrolled = header.classList.contains('scrolled');
+
+    if (scrollY > threshold && !headerScrolled) {
+        header.classList.add('scrolled');
+    } else if (scrollY < threshold - 5 && headerScrolled) {
+        header.classList.remove('scrolled');
+    }
+});
+const menuItems = document.querySelector(".menu-items");
+const hamburgerMenuBtn = document.querySelector(".hamburger-menu-btn");
+
+hamburgerMenuBtn.addEventListener("click", function () {
+    menuItems.classList.toggle("active");
+    hamburgerMenuBtn.classList.toggle("open");
+});
+
+let currentlyOpenDropdown = null; // To keep track of the currently open dropdown
+let currentlyOpenButton = null; // To keep track of the currently open button
+
+function toggleDropdown(event) {
+    const screenWidth = window.innerWidth;
+    if (screenWidth < 800) {
+        const button = event.currentTarget;
+        const dropdownContent = button.nextElementSibling;
+                
+        // Close the currently open dropdown if it exists and is not the same as the clicked one
+        if (currentlyOpenDropdown && currentlyOpenDropdown !== dropdownContent) {
+            currentlyOpenDropdown.style.display = 'none';
+            currentlyOpenButton.classList.remove('active-button');
+        }
+
+        // Toggle the clicked dropdown
+        if (dropdownContent.style.display === 'block') {
+        dropdownContent.style.display = 'none';
+            button.classList.remove('active-button');
+            currentlyOpenDropdown = null;
+            currentlyOpenButton = null;
+            document.removeEventListener('click', handleClickOutside);
+        } else {
+            dropdownContent.style.display = 'block';
+            button.classList.add('active-button');
+            currentlyOpenDropdown = dropdownContent;
+            currentlyOpenButton = button;
+            document.addEventListener('click', handleClickOutside);
+            }
+        }
+}
+
+function handleClickOutside(event) {
+    if (currentlyOpenDropdown && !currentlyOpenButton.contains(event.target) && !currentlyOpenDropdown.contains(event.target)) {
+        currentlyOpenDropdown.style.display = 'none';
+        currentlyOpenButton.classList.remove('active-button');
+        currentlyOpenDropdown = null;
+        currentlyOpenButton = null;
+        
+        // Remove the click outside listener when dropdown is closed
+        document.removeEventListener('click', handleClickOutside);
+    }
+}
+
+// Add event listeners to all dropdown buttons
+const dropdownButtons = document.querySelectorAll('.menu-buttons');
+dropdownButtons.forEach(button => {
+    button.addEventListener('click', toggleDropdown);
 });

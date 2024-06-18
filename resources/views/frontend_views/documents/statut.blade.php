@@ -2,17 +2,15 @@
 
 @section('title', 'Статут')
 
+@section('page_header')
+<h1>Статут</h1>
+@endsection
 
 @section('content')
-<div class="pages-intro">
-    <div class="pages-intro-container">
-        <h1>СТАТУТ</h1>
-    </div>
-</div>  
+
 
 <div class="erasmus-wrapper">
     <div class="erasmus-container">
-        <div class="year-container"><h1>Статут</h1></div>
         <object data="{{ asset('assets/regulations/statut.PDF') }}#toolbar=0" type="application/pdf" width="100%" height="600px">
         </object>
         <button class="open-pdf" onclick="openPDF('{{ asset('assets/regulations/statut.PDF') }}')">Прегледај ПДФ</button>

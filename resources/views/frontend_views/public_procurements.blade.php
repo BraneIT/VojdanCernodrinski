@@ -2,13 +2,11 @@
 
 @section('title', 'Javni nabavki')
 
-@section('content')
+@section('page_header')
+<h1>Javni nabavki</h1>
+@endsection
 
-<div class="pages-intro">
-    <div class="pages-intro-container">
-        <h1>јавни набавки</h1>
-    </div>
-</div> 
+@section('content')
 
 <div class="erasmus-wrapper">
     

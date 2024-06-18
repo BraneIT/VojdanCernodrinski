@@ -268,4 +268,28 @@ class FrontendController extends Controller
     public function predmetnaNastava(){
         return view('frontend_views.rasporedi.raspored_na_predmetna');
     }
+    public function principal(){
+        return view('frontend_views.employees.principal');
+    }
+    public function administrative_employees(){
+        return view('frontend_views.employees.administration_employees');
+    }
+
+    // 
+    public function strucna_sluzba(){
+        return view('frontend_views.employees.strucna_sluzba');
+    }
+    public function strucni_aktivi(){
+        return view('frontend_views.employees.strucni_aktivi');
+    }
+    public function oddelenski_sovet(){
+        return view('frontend_views.employees.odelenski_savet');
+    }
+    public function nastavni_kadar_odelenska(){
+        return view('frontend_views.employees.nastavni_kadar_odelenska');
+    }
+    public function nastavni_kadar_predmetna(){
+        return view('frontend_views.employees.nastavni_kadar_predmetna');
+    }
+    
 }

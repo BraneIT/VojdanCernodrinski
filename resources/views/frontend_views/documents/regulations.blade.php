@@ -2,13 +2,12 @@
 
 @section('title', 'Правиници и прописи')
 
+@section('page_header')
+<h1>Правиници и прописи</h1>
+@endsection
 
 @section('content')
-    <div class="pages-intro">
-        <div class="pages-intro-container">
-            <h1>ПРАВИЛНИЦИ И ПРОПИСИ</h1>
-        </div>
-    </div>
+
     <div class="erasmus-wrapper">
         <div class="documents-container">
 

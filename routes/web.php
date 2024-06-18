@@ -118,35 +118,35 @@ Route::middleware('auth')->prefix('admin')->group(function(){
 // Frontend routes
 
 Route::get('/', [FrontendController::class, 'index'])->name('index');
-Route::get('/gallery', [FrontendController::class, 'gallery']);
+Route::get('/galerija', [FrontendController::class, 'gallery']); //
 Route::get('/erasmus/{slug}', [FrontendController::class, 'show_erasmus']);
-Route::get('/statut', [FrontendController::class, 'statut']);
-Route::get('/finansiski_dokumenti', [FrontendController::class, 'finance']);
+Route::get('/statut', [FrontendController::class, 'statut']); //
+Route::get('/finansiski_dokumenti', [FrontendController::class, 'finance']); //
 // Route::get('/finansiski_dokumenti/{year}', [FrontendController::class, 'show_finance']);
 Route::get('/finansiski_dokumenti/{category_id}/{year}/{slug}', [FrontendController::class, 'show_single_finance']);
-Route::get('/godisna_programa', [FrontendController::class, 'godisnaPrograma']);
-Route::get('/skica', [FrontendController::class, 'plan']);
+Route::get('/godisna_programa', [FrontendController::class, 'godisnaPrograma']); //
+Route::get('/skica', [FrontendController::class, 'plan']); //
 Route::get('/godisna_programa_za_rad_na_učilište_i_godišnji_i_polugodišnji izvestaji/{category_id}/{year}/{slug}', [FrontendController::class, 'show_single_finance']);
 Route::get('/izvestaj_od_samoevaluacija/{category_id}/{year}/{slug}', [FrontendController::class, 'show_single_finance']);
 Route::get('/razvojna_programa/{category_id}/{year}/{slug}', [FrontendController::class, 'show_single_finance']);
-Route::get('/razvojna_programa', [FrontendController::class, 'razvojnaPrograma']);
-Route::get('/integralna_inspekcija', [FrontendController::class, 'integralnaInspekcija']);
-Route::get('/izvestaj_od_samoevaluacija', [FrontendController::class, 'evaluacija']);
-Route::get('/pravilnici_i_propisi', [FrontendController::class, 'regulations']);
+Route::get('/razvojna_programa', [FrontendController::class, 'razvojnaPrograma']); //
+Route::get('/integralna_inspekcija', [FrontendController::class, 'integralnaInspekcija']); //
+Route::get('/izvestaj_od_samoevaluacija', [FrontendController::class, 'evaluacija']); //
+Route::get('/pravilnici_i_propisi', [FrontendController::class, 'regulations']); //
 Route::get('/pravilnici_i_propisi/{slug}', [FrontendController::class, 'showRegulations']);
 Route::get('/ucestvo_na_natprevari_i_ostali_nagradi/{year}', [FrontendController::class, 'showCompetitions']);
 Route::get('/ucestvo_na_natprevari_i_ostali_nagradi/{category_id}/{year}/{slug}', [FrontendController::class, 'show_single_finance']);
 Route::get('/megjuetnicka_integracija_vo_obrazovanieto', [FrontendController::class, 'megjuetnickaIntegracija']);
 Route::get('/megjuetnicka_integracija_vo_obrazovanieto/{category_id}/{year}/{slug}', [FrontendController::class, 'show_single_finance']);
 Route::get('/rakovoditeli_na_paralelki', [FrontendController::class, 'rakovoditeljiNaParalelki']);
-Route::get('/vizija_i_misija', [FrontendController::class, 'misijaIVizija']);
+Route::get('/vizija_i_misija', [FrontendController::class, 'misijaIVizija']);//
 Route::get('/novosti', [FrontendController::class, 'news']);
 Route::get('/novosti/{slug}', [FrontendController::class, 'newsShow']);
 Route::get('/kontakt', [FrontendController::class, 'showContact']);
 Route::post('/kontakt', [ContactFormController::class, 'sendEmail'])->name('contact.send');
 Route::get("/prvacinja/{year}", [FrontendController::class, 'prvacinja']);
-Route::get('/informacii_od_javen_karakter', [FrontendController::class, 'publicInformations']);
-Route::get('/za_nasiot_patron', [FrontendController::class, 'patron']);
+Route::get('/informacii_od_javen_karakter', [FrontendController::class, 'publicInformations']);//
+Route::get('/za_nasiot_patron', [FrontendController::class, 'patron']); //
 Route::get('/raspored_na_zvonenje', [FrontendController::class, 'rasporedNaZvonenje']);
 Route::get('/under_construction', [FrontendController::class, 'underConstruction']);
 Route::get("/planiranja_za_ocenuvanje", [FrontendController::class, 'grades']);
@@ -154,19 +154,22 @@ Route::get('/ucenicka_tela', [FrontendController::class, 'ucenickaTela']);
 Route::get('/raspored_na_smeni', [FrontendController::class, 'smeni']);
 Route::get('/etvining', [FrontendController::class, "etvining"]);
 Route::get('/etvining/{category_id}/{year}/{slug}', [FrontendController::class, "show_single_finance"]);
-Route::get('/javni_nabavki', [FrontendController::class, 'publicProcurements']);
+Route::get('/javni_nabavki', [FrontendController::class, 'publicProcurements']); //
 Route::get('/aktivnosti/{year}', [FrontendController::class, 'activities']);
 Route::get('/aktivnosti/{year}/{slug}', [FrontendController::class, 'showActivities'])->name('aktivities.show');
 Route::get('/projekti/{year}', [FrontendController::class, 'projects']);
 Route::get('/projekti/{year}/{slug}', [FrontendController::class, 'projectsShow'])->name('projects.show');
 Route::get("/slobodni_izborni_predmeti", [FrontendController::class, 'izborni']);
-Route::get("/licna_karta", [FrontendController::class, 'licnaKarta']);
-Route::get("/razvoj_i_istorijat", [FrontendController::class, 'razvojIIstorijat']);
-Route::get("/organizacija", [FrontendController::class, 'organizacija']);
-Route::get("/prijemni_denovi_na_ucilisteto", [FrontendController::class, 'prijemniDenoviNaUciliste']);
-Route::get("/prijemni_denovi_na_nastavnicite", [FrontendController::class, 'prijemniDenoviNaNastavnici']);
+Route::get("/licna_karta", [FrontendController::class, 'licnaKarta']); //
+Route::get("/razvoj_i_istorijat", [FrontendController::class, 'razvojIIstorijat']);//
+Route::get("/organizacija", [FrontendController::class, 'organizacija']); //
+Route::get("/prijemni_denovi_na_ucilisteto", [FrontendController::class, 'prijemniDenoviNaUciliste']); //
+Route::get("/prijemni_denovi_na_nastavnicite", [FrontendController::class, 'prijemniDenoviNaNastavnici']); //
 Route::get("/raspored_na_oddelenska_nastava", [FrontendController::class, 'oddelenskaNastava']);
 Route::get("/raspored_na_predmetna_nastava", [FrontendController::class, 'predmetnaNastava']);
+Route::get("/direktor", [FrontendController::class, 'principal']);//
+Route::get("/administrativen_kadar", [FrontendController::class, 'administrative_employees']);//
+
 Route::fallback(function () {
         return view('errors.404');
     });

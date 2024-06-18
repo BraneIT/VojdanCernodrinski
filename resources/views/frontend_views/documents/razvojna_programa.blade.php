@@ -2,13 +2,13 @@
 
 @section('title', 'Развојна програма на училиштето')
 
+@section('page_header')
+
+<h1>Развојна програма на училиштето</h1>
+@endsection
 
 @section('content')
-<div class="pages-intro">
-    <div class="pages-intro-container">
-        <h1>Развојна програма за работа на училиштето</h1>
-    </div>
-</div>  
+
 
 <div class="erasmus-wrapper">
     @if(sizeof($documents)==0)

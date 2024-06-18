@@ -2,12 +2,12 @@
 
 @section('title', 'Информации од јавен карактер')
 
+@section('page_header')
+<h1>ИНФОРМАЦИИ ОД ЈАВЕН КАРАКТЕР</h1>
+@endsection
+
 @section('content')
-<div class="pages-intro">
-    <div class="pages-intro-container">
-        <h1>ИНФОРМАЦИИ ОД ЈАВЕН КАРАКТЕР</h1>
-    </div>
-</div>   
+
 <div class="erasmus-wrapper">
     <div class="documents-container">
         <div class="public-info">
