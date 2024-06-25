@@ -6,29 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+Mono+TC:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+Mono+TC&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('assets/css/frontend_css/style.css') }}">
-    <link rel="icon" type="image/png" href="{{ asset('assets/images/logo-manji.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('assets/images/VojdanLogo.png') }}">
      <title>@yield('title')</title>
-    <link rel="preload" href="{{ asset('assets/images/logo-manji.webp') }}" as="image">
 </head>
 <body>
 <header class="header">
     <div class="menu">
         <div class="logo-wrapper">
+          <a href="/">
             <div class="logo-container">
-                <img src="{{asset('assets/images/VojdanLogo.png')}}" alt="Vojdan Logo">
+                <img src="{{asset($logo)}}" alt="Vojdan Logo">
             </div>
             <div class="logo-content">
                 
                 <h2>ВОЈДАН ЧЕРНОДРИНСКИ</h2>
                 
             </div>
+          </a>
         </div>
         <button class="hamburger-menu-btn">
           <span class="line"></span>
@@ -45,6 +46,7 @@
                     <a href="/licna_karta">ЛИЧНА КАРТА</a>
                     <a href="/razvoj_i_istorijat">RАЗВОЈ И ИСТОРИЈАТ</a>
                     <a href="/organizacija">ОРГАНИЗАЦИЈА</a>
+                    <a href="/novosti">НОВОСТИ</a>
                     <a href="/za_nasiot_patron">ЗА НАШИОТ ПАТРОН</a>
                     <a href="/vizija_i_misija">МИСИЈА И ВИЗИЈА</a>
                     <a href="/prijemni_denovi_na_ucilisteto">ПРИЈЕМНИ ДЕНОВИ НА УЧИЛИШТЕТО</a>
@@ -57,24 +59,24 @@
                 <button class="menu-buttons">ДОКУМЕНТИ</button>
                 <div class="dropdown-content ">
                     <a href="/statut">СТАТУТ</a>
-                    <a href="/godisna_programa">ГОДИШНА ПРОГРАМА ЗА РАБОТА НА УЧИЛИШТЕТО И ГОДИШНИ И ПОЛУГОДИШНИ ИЗВЕШТАИ</a>
+                    <a href="/godisna_programa">ГОДИШНА ПРОГРАМА ЗА РАБОТА НА УЧИЛИШТЕТО</a>
                     <a href="/razvojna_programa">РАЗВОЈНА ПРОГРАМА ЗА РАБОТА НА УЧИЛИШТЕТО</a>
                     <a href="/izvestaj_od_samoevaluacija">ИЗВЕШТАЈ ОД САМОЕВАЛУАЦИЈА</a>
                     <a href="/integralna_inspekcija">ИНТЕГРАЛНА ИНСПЕКЦИЈА</a>
                     <a href="/skica">ПЛАН/СКИЦА НА УЧИЛИШТЕТО</a>
                     <a href="/pravilnici_i_propisi">ПРАВИЛНИЦИ И ПРОПИСИ</a>
                     <a href="/finansiski_dokumenti">ФИНАНСИСКИ ДОКУМЕНТИ</a>
-                    <a href="#">ПРВАЧИЊА</a>
+                    <a href="/prvacinja">ПРВАЧИЊА</a>
                     <a href="/javni_nabavki">ЈАВНИ НАБАВКИ</a>
                 </div>
             </div>
             <div class="menu-item dropdown">
               <button class="menu-buttons">ПРОЕКТИ</button>
                 <div class="dropdown-content">
-                    <a href="#">ЕРАЗМУС+</a>
-                    <a href="#">ЕТВИНИНГ</a>
-                    <a href="#">АКТИВНОСТИ</a>
-                    <a href="#">МЕЃУЕТНИЧКА ИНТЕГРАЦИЈА ВО ОБРАЗОВАНИЕТО</a>
+                    <a href="/erazmus">ЕРАЗМУС+</a>
+                    <a href="/etvining">ЕТВИНИНГ</a>
+                    <a href="/aktivnosti">АКТИВНОСТИ</a>
+                    <a href="/megjuetnicka_integracija_vo_obrazovanieto">МЕЃУЕТНИЧКА ИНТЕГРАЦИЈА ВО ОБРАЗОВАНИЕТО</a>
                 </div>
             </div>
             <div class="menu-item dropdown">
@@ -82,13 +84,14 @@
               
               <div class="dropdown-content">
                 <a href="#">НАСТАВНИ ПРОГРАМИ ПО ГЕНЕРАЦИИ ПРЕДМЕТИ И ЗАКОНИ</a>
-                <a href="#">ПЛАНИРАЊА ЗА ОЦЕНУВАЊЕ</a>
-                <a href="#">ДОДАТНА НАСТАВА</a>
-                <a href="#">ВОННАСТАВНИ АКТИВНОСТИ</a>
-                <a href="#">БИБЛИОТЕКА</a>
-                <a href="#">РАСПОРЕД НА НАСТАВА</a>
-                <a href="#">РАСПОРЕД НА СМЕНИ</a>
-                <a href="#">РАСПОРЕД НА ЅВОНЕЊЕ</a>
+                <a href="/planiranja_za_ocenuvanje">ПЛАНИРАЊА ЗА ОЦЕНУВАЊЕ</a>
+                <a href="/dodatna_nastava">ДОДАТНА НАСТАВА</a>
+                <a href="/dopunska_nastava">ДОПУНСКА НАСТАВА</a>
+                <a href="/vonnstavni_aktivnosti">ВОННАСТАВНИ АКТИВНОСТИ</a>
+                <a href="/biblioteka">БИБЛИОТЕКА</a>
+                <a href="/raspored_na_nastava">РАСПОРЕД НА НАСТАВА</a>
+                <a href="/raspored_na_smeni">РАСПОРЕД НА СМЕНИ</a>
+                <a href="/raspored_na_zvonenje">РАСПОРЕД НА ЅВОНЕЊЕ</a>
 
             </div>
             </div>
@@ -98,15 +101,16 @@
               <div class="dropdown-content">
                 <a href="/direktor">ДИРЕКТОР</a>
                 <a href="/administrativen_kadar">АДМИНИСТРАТИВЕН КАДАР</a>
-                <a href="#">СТРУЧНА СЛУЖБА</a>
-                <a href="#">НАСТАВНИ КАДАР ОДДЕЉЕНСКА НАСТАВА</a>
-                <a href="#">НАСТАВНИ КАДАР ПРЕДМЕТНА НАСТАВА</a>
-                <a href="#">ОДДЕЉЕНСКИ СОВЕТ</a>
-                <a href="#">СТРУЧНИ АКТИВИ</a>
+                <a href="/strucna_sluzba">СТРУЧНА СЛУЖБА</a>
+                <a href="/nastavni_kadar_odelenska_nastava">НАСТАВНИ КАДАР ОДДЕЉЕНСКА НАСТАВА</a>
+                <a href="/nastavni_kadar_predmetna_nastava">НАСТАВНИ КАДАР ПРЕДМЕТНА НАСТАВА</a>
+                <a href="/oddelenski_sovet">ОДДЕЉЕНСКИ СОВЕТ</a>
+                <a href="/strucni_aktivi">СТРУЧНИ АКТИВИ</a>
 
             </div>
             </div>
-            <div class="menu-item"><a href="#">КОНТАКТ</a></div>
+            
+            <div class="menu-item"><a href="/kontakt">КОНТАКТ</a></div>
         </nav>
     </div>
 </header>   
@@ -137,7 +141,7 @@
         </div>
       
       </div>
-      <div class="copyright"><p>Copyright © 2024 OOU "Vojdan Černodrinski"</p></div>
+      <div class="copyright"><p>Copyright © 2024 - OOU "Vojdan Černodrinski"</p></div>
     </div>
     <script type="module">
         import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs'

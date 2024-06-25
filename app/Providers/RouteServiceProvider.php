@@ -36,5 +36,8 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
         });
+
+
+        $this->app['router']->aliasMiddleware('auth.session', \App\Http\Middleware\EnsureValidSession::class);
     }
 }

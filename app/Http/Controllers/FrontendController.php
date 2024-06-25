@@ -38,27 +38,30 @@ class FrontendController extends Controller
     }
 
     public function index()
-    {
-        // Fetch news and galleries separately but simultaneously
-        $news = News::latest()->take(6)->get();
-        $galleryQuery = Gallery::take(4)->get();
+    {   
+        $news=cache()->remember('news', now()->addMinutes(60), function () {
+            return News::latest()->take(6)->orderBy('created_at', 'desc')->get();
+        });
+        
+        $gallery = cache()->remember('gallery', now()->addMinutes(60), function () {
+           return Gallery::take(4)->orderBy('created_at', 'desc')->get();  
+        });
 
-        // Execute both queries simultaneously
-        $results = [
-            'news' => $news,
-            'gallery' => $galleryQuery,
-        ];
 
-        return view('frontend_views.index', $results);
+        return view('frontend_views.index', compact('news', 'gallery'));
     }
     public function gallery(){
         $images = Gallery::select('image')->get();
         return view('frontend_views.gallery', compact('images'));
     }
+    public function getAllErasmus(){
+        $erasmus= Erasmus::select('name', 'slug', 'start_date', 'end_date')->get();
+        return view('frontend_views.erazmus.index', compact('erasmus'));
+    }
     public function show_erasmus($slug){
         $project = Erasmus::where('slug',$slug)->firstOrFail();
 
-        return view('frontend_views.documents.erasmus', compact('project'));
+        return view('frontend_views.erazmus.erazmus', compact('project'));
     }
     public function statut(){
         return view('frontend_views.documents.statut');
@@ -182,12 +185,15 @@ class FrontendController extends Controller
         $news = News::where('slug',$slug)->first();
         return view('frontend_views.news.news_show', compact('news'));
     }
-    
+    public function getPrvacinjaYears(){
+        $prvacinja = Prvacinja::distinct()->pluck('year')->toArray();
+        return view('frontend_views.prvacinja.prvacinja_years', compact('prvacinja'));
+    }
     public function prvacinja($year){
         
         $prvacinja = Prvacinja::where('year', $year)->get();
         $year = str_replace('-', '/', $year);
-        return view('frontend_views.prvacinja', compact('prvacinja', 'year'));
+        return view('frontend_views.prvacinja.prvacinja', compact('prvacinja', 'year'));
     }
 
     public function publicInformations(){
@@ -236,6 +242,10 @@ class FrontendController extends Controller
         $project = Projekti::where('year',$year)->where('slug', $slug)->first();
         
         return view('frontend_views.projects.show', compact('project'));
+    }
+    public function getActivitiesYears(){
+        $activities = Activities::distinct()->pluck('year')->toArray();
+        return view('frontend_views.activities.activities_by_years', compact('activities'));
     }
     public function activities($year){
         $activities = Activities::where('year', $year)->get();
@@ -286,10 +296,25 @@ class FrontendController extends Controller
         return view('frontend_views.employees.odelenski_savet');
     }
     public function nastavni_kadar_odelenska(){
-        return view('frontend_views.employees.nastavni_kadar_odelenska');
+        return view('frontend_views.employees.nastavni_kadar_odeljenska');
     }
     public function nastavni_kadar_predmetna(){
         return view('frontend_views.employees.nastavni_kadar_predmetna');
+    }
+    public function biblioteka(){
+        return view('frontend_views.classes.biblioteka');
+    }
+    public function rasporedNaNastava(){
+        return view('frontend_views.classes.raspored_na_nastava');
+    }
+    public function dodatnaNastava(){
+        return view('frontend_views.classes.dodatna_nastava');
+    }
+    public function dopunskaNastava(){
+        return view('frontend_views.classes.dopunska_nastava');
+    }
+    public function vannastavneAktivnosti(){
+        return view('frontend_views.classes.vannastavne_aktivnosti');
     }
     
 }

@@ -3,5 +3,8 @@
 
 @section('content')
     <h1>Добродојдовте на админ панел</h1>
+    <p>Корисник: {{$user->username}}</p>
+    {{-- <p>{{$tokens}}</p> --}}
+    
   
 @endsection

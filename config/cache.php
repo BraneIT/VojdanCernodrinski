@@ -92,6 +92,10 @@ return [
         'octane' => [
             'driver' => 'octane',
         ],
+        'file' => [
+            'driver' => 'file',
+            'path' => storage_path('app/cache'),
+        ],
 
     ],
 

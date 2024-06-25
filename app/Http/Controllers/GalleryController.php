@@ -22,11 +22,11 @@ class GalleryController extends Controller
     public function store(Request $request)
 {
     $validate = $request->validate([
-        'image' => 'required|image|max:8300',
+        'image' => 'required|image|max:1000',
     ],
-    [   'image.required' => 'The image field is required.',
-        'image.image' => 'The file must be an image.',
-        'image.max' => 'The image size must not exceed 8 MB.',
+    [   'image.required' => 'Слика је обавезна, молимо изаберите слику.',
+        'image.image' => 'Фајл мора бити слика.',
+        'image.max' => 'Максимална величина слике може бити 2 МБ',
     ]);
 
     // Store the original image

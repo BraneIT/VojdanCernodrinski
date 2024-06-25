@@ -2,13 +2,12 @@
 
 @section('title', 'Документи')
 
+@section('page_header')
 
+<h1>{{$document->title}}</h1>
+@endsection
 @section('content')
-<div class="pages-intro">
-    <div class="pages-intro-container">
-        <h1>{{$document->title}}</h1>
-    </div>
-</div>  
+
 <div class="erasmus-wrapper">
     <div class="erasmus-container">
         <object data="{{ asset($document->file) }}#toolbar=0" type="application/pdf" width="100%" height="600px">

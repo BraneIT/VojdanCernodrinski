@@ -12,7 +12,7 @@
 
     <div class="documents-container">
         <div class="grades-wrapper">
-        <img src="{{ asset('assets/images/planiranja za ocenuvanje.PNG') }}" alt=""></div>
+        <img src="{{ asset('assets/images/ocenuvanje-vojdan.PNG') }}" alt=""></div>
     </div>
 </div>
 

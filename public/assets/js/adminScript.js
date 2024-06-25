@@ -29,10 +29,12 @@ if(fileInput && fileInput2){
     fileInput.addEventListener('input', submitParalelki);
     fileInput2.addEventListener('input', submitParalelki);
 }
+
 function submitParalelki(){
     if(fileInput.files.length > 0){
         imageButton.classList.remove('red-button');
         imageButton.classList.add('green-button');
+        console.log('clicked');
     }
     if(fileInput2.files.length > 0){
         imageButton2.classList.remove('red-button');
@@ -55,21 +57,30 @@ if (imageButton2) {
         fileInput2.click();
     });
 }
+
+const uploadImageButton = document.getElementById("uploadImageButton");
 const errorField = document.getElementsByClassName("error-field")[0];
 const galleryForm = document.getElementById("galleryForm");
 const imageInput = document.getElementById("image");
 const uploadButton = document.getElementById("uploadButton");
-if (imageInput && uploadButton) {
+uploadImageButton?.addEventListener("click", function () {
+    imageInput.click();
+})
+if (imageInput && uploadImageButton) {
     imageInput.addEventListener("change", function () {
         if (imageInput.files.length > 0) {
             // If a file is selected, change the style of the Upload Image button to green
             uploadButton.classList.remove("red-button");
             uploadButton.classList.add("green-button");
+            uploadImageButton.classList.remove("red-button");
+            uploadImageButton.classList.add("green-button");
             errorField.style.display = "none";
         } else {
             // If no file is selected, revert the style of the Upload Image button to red
             uploadButton.classList.remove("green-button");
             uploadButton.classList.add("red-button");
+            uploadImageButton.classList.remove("green-button");
+            uploadImageButton.classList.add("red-button");
         }
     });
 }
@@ -79,7 +90,7 @@ if (galleryForm) {
             // If no file is selected, prevent form submission
             event.preventDefault();
             errorField.style.display = "block";
-            errorField.textContent = "Please select an image to upload";
+            errorField.textContent = "Слика је обавезна, молимо одберите слику";
         } else {
             errorField.textContent = "";
         }

@@ -12,7 +12,7 @@
         <div class="gallery-add">
         <label for="image">Прикачи слика</label>
         <input type="file" class="form-control-file" id="image" name="image" accept="image/*" style="display: none;">
-                <button type="button" id="imageButton" class="red-button button-gallery">Одбери слика</button>
+                <button type="button" id="uploadImageButton" class="red-button button-gallery">Одбери слика</button>
                 <p class="error-field" style="display: none;"></p>
         @error('image')
             <div class="invalid-feedback">{{ $message }}</div>

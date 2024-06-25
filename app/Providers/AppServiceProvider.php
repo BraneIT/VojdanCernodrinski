@@ -7,6 +7,7 @@ use App\Models\Erasmus;
 use App\Models\Projekti;
 use App\Models\Prvacinja;
 use App\Models\Takmicenja;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
@@ -27,20 +28,18 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer('frontend_views.layout.layout', function ($view) {
-            $erasmus = Erasmus::select('name', 'slug')->get();
-            $competitions = Takmicenja::distinct()->pluck('year')->toArray();
-            $prvacinjaUniqueYears = Prvacinja::distinct()->pluck('year')->toArray(); 
-            $activities = Activities::distinct()->pluck('year')->toArray();
-            $projects = Projekti::distinct()->pluck('year')->toArray();
-            $view->with([
-                'erasmus' => $erasmus,
-                'competitions' => $competitions,
-                'prvacinjaUniqueYears' => $prvacinjaUniqueYears,
-                'activities' => $activities,
-                'projects' => $projects,
-            ]);
-
-        });
+            $view->with('logo', $this->cacheLogo());
+           });
+        View::composer('admin_views.layout.admin_layout', function ($view) {
+            $view->with('logo', $this->cacheLogo());
+           });
         Paginator::useBootstrap();
+        
+    }
+    public function cacheLogo(){
+        $logoUrl = 'assets/images/VojdanLogo.png';
+        Cache::put('image_url_vojdan_logo', $logoUrl, now()->addMinutes(60));
+        $image = Cache::get('image_url_vojdan_logo');
+        return $image;
     }
 }

@@ -12,16 +12,16 @@
       
             <p><span class="hero-content-title">ВОЈДАН ЧЕРНОДРИНСКИ</span> <br> </p>
             <h1>
-              
+                "Основно училиште - првите чекори кон бескрајните можности"
             </h1>
           </div>
         </div>
       
-        <div class="custom-shape-divider-bottom-1717538745">
+        {{-- <div class="custom-shape-divider-bottom-1717538745">
           <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
               <path d="M0,0V7.23C0,65.52,268.63,112.77,600,112.77S1200,65.52,1200,7.23V0Z" class="shape-fill"></path>
           </svg>
-      </div>
+      </div> --}}
       </section>
    
     <section id="news-wrapper" class="hidden">
@@ -29,10 +29,11 @@
             <h1>НОВОСТИ</h1>
             
         </div>
-        <div class="news-container hidden">
-            @if (sizeof($news) == 0)
-            <h1>Моментално нема објавени новости</h1>
+        @if (sizeof($news) == 0)
+            <h1 class="no-news">Моментално нема објавени новости</h1>
             @else
+        <div class="news-container hidden">
+            
             @foreach($news as $item)
                 <div class="news hidden">
                     <div class="news-image-container">
@@ -53,15 +54,16 @@
                     </div>
                     <div class="news-button">
 
-                        <a href="/novosti/{{ $item->id }}">Прочитај повеке</a>
+                        <a href="/novosti/{{ $item->slug }}">Прочитај повеке</a>
                     </div>
                 </div>
             @endforeach
-            @endif
+            
             
         </div>
         <a href="/novosti" class="all-news">
             Види ги сите новости</a>
+            @endif
     </section>
    
     {{-- <section id="gallery" class="hidden">
@@ -82,7 +84,11 @@
         
     </section> --}}
     <section id="gallery" class="hidden">
+
         <h1>ГАЛЕРИЈА</h1>
+        @if(sizeof($gallery)==0)
+        <h1 class="no-news">Моментално нема објавени слики</h1>
+        @else
         <div class="carousel">
         <!-- Slider main container -->
           <div class="swiper">
@@ -107,6 +113,7 @@
           </div>
         </div>
         <button class="see-more">Погледни ги сите слики</button>
+        @endif
       </section>
     <section id="video" class="hidden">
         <div class="video-label">

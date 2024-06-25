@@ -10,7 +10,7 @@
     <div class="container">
         <nav class="menu">
             <div class="logo-container">
-            <img src="{{ asset('assets/images/logo-manji.png') }}" alt="Example Image">
+            <img src="{{ asset($logo) }}" alt="Logo" loading="eager">
             <div class="logo-label">
                 <p>Админ панел</p>
                 <h3>ООУ Петар Поп Арсов</h3>

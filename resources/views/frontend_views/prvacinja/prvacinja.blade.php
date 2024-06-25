@@ -2,12 +2,12 @@
 
 @section("title", "Првачиња")
 
+@section('page_header')
+<h1>Првачиња</h1>
+@endsection
+
 @section('content')
-<div class="pages-intro">
-    <div class="pages-intro-container">
-        <h1>ПРВАЧИЊА </h1>
-    </div>
-</div> 
+
 <div class="erasmus-wrapper">
     
     <div class="documents-container">

@@ -29,4 +29,18 @@ class StoreActivitiesRequest extends FormRequest
             'year' => 'required',
         ];
     }
+    /**
+     * Get custom error messages for specific validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'name.required' => 'Молимо вас додајте име активности',
+            'image_path.required' => 'Молимо вас да додате слику',
+            'content.required' => 'Молимо вас додајте содржина',
+            'year.required' => 'Одберите годину за активност',
+        ];
+    }
 }

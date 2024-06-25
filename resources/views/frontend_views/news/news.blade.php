@@ -10,13 +10,13 @@
 
 
  <div class="erasmus-wrapper">
-    
+    <section id="news-wrapper" class="hidden">
         <div class="news-container">
             @foreach($news as $item)
                 <div class="news">
                     <div class="news-image-container">
                         @if($item->image === "")
-                            <img src="{{ asset('assets/images/logo.png') }}" class="default-image">
+                            <img src="{{ asset('assets/images/VojdanLogo.png') }}" class="default-image">
                         @else
                             <img src="{{$item->image}}" alt="" class="news-images">
                         @endif
@@ -38,5 +38,6 @@
             @endforeach
         </div>
 
+    </section>
  </div>
 @endsection
